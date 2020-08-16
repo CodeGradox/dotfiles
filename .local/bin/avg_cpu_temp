@@ -1,0 +1,4 @@
+#!/usr/bin/fish
+
+set -l sum (sensors | awk '/^Core [0-9]*/ { print $3 }' | rg '(\d+\.\d+)' -or '$1' | string join '+' | bc)
+echo $sum "/" (nproc) | bc

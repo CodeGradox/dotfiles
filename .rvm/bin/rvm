@@ -1,0 +1,6 @@
+#!/usr/bin/fish
+
+# Tricks capistrano to use rbenv instead of rvm for running ruby commands.
+# Capistrano invokes rvm with the command `~/.rvm/bin/rvm <ruby-version> do bundle exec ...`.
+# Rbenv does not understand `<ruby-version> do bundle` so we simply ignore those commands.
+rbenv $argv[4..-1]

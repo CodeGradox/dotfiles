@@ -1,0 +1,8 @@
+#!/usr/bin/fish
+# Copies an emoji to the clipboard.
+
+set -l emoji (cat $HOME/.local/share/emoji | rofi -dmenu -i -p 'Emoji:' -no-custom)
+
+if test $status -eq 0
+  echo $emoji | awk '{ print $1 }' | wl-copy -n
+end

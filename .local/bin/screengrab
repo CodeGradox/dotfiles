@@ -1,0 +1,14 @@
+#!/usr/bin/fish
+# Select an area of the screen to take a screenshot then
+# copies the image to the clipboard.
+
+test -e $HOME/pictures/screenshots || mkdir -p $HOME/pictures/screenshots
+
+set -l filename (date +"%Y-%m-%d-%H%M%S_screenshot.png")
+set -l path $HOME/pictures/screenshots/$filename
+grim -g (slurp) $path
+
+if test $status -eq 0
+  wl-copy < $path
+  notify-send -i $path "Screenshot taken and added to clipboard" $filename
+end

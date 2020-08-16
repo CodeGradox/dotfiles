@@ -1,0 +1,5 @@
+#!/usr/bin/fish
+# Locks the screen then suspends the machine.
+
+swaylock
+systemctl suspend

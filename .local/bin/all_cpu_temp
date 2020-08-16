@@ -1,0 +1,3 @@
+#!/usr/bin/fish
+
+sensors | awk '/Core/ { print $3 }' | rg '(\d+\.\d+)' -or '$1'

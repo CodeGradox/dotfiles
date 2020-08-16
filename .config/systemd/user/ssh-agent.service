@@ -1,0 +1,20 @@
+# Starts the ssh-agent.
+# Add the environment variable
+#   SSH_AUTH_SOCK DEFAULT="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+# to ~.pam_environment.
+# Enable and start the service with:
+#   systemctl --user enable ssh-agent
+#   systemctl --user start ssh-agent
+# Then add
+#   AddKeysToAgent yes
+# into the ~.ssh/config file.
+[Unit]
+Description=SSH key agent
+
+[Service]
+Type=simple
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,17 @@
+#!/usr/bin/fish
+# Takes a screenshot of the selected window.
+
+test -e $HOME/pictures/screenshots || mkdir -p $HOME/pictures/screenshots
+
+set -l filename (date +"%Y-%m-%d-%H%M%S_screenshot.png")
+set -l path $HOME/pictures/screenshots/$filename
+
+# Use jq to get the position of the all visible windows and pass the coordinates to slurp.
+# Slurp can then hightlight the the windows. When a window is selected its coordinates
+# are passed to grim which will take the screenshot.
+grim -g (swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp) $path
+
+if test $status -eq 0
+  wl-copy < $path
+  notify-send -i $path "Screenshot taken and added to clipboard" $filename
+end
