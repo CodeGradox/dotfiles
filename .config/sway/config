@@ -19,7 +19,7 @@ set $term alacritty
 # Your preferred application launcher
 # set $menu dmenu_run
 # set $menu rofi -theme slate-custom -show run
-set $menu rofi -show-icons true -show drun
+set $menu rofi -show-icons true -modi calc -show drun,calc
 
 
 ### Output configuration
