@@ -230,10 +230,10 @@ client.focused_inactive #00000033   #b5b5b5         #000000     #00000033       
 #
 # Media keybinds.
 #
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioStop exec playerctl stop
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym XF86AudioStop exec playerctl -p spotify stop
+bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym XF86AudioPrev exec playerctl -p spotify previous
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.usb-Audioengine_Audioengine_D1-00.analog-stereo toggle
 
 #
