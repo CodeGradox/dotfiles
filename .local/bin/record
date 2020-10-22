@@ -1,0 +1,46 @@
+#!/usr/bin/fish
+# Script for recording the screen using wf-recorder.
+
+function print_help_and_exit
+  echo "Usage: record [OPTION]"
+  echo "Screen recording using wf-recorder"
+  echo
+  echo "OPTION can be one of the following"
+  echo -e "  screen\tRecord the entire screen."
+  echo -e "  window\tSeclect a window to record."
+  echo -e "  grab  \tSelect an area to record."
+  exit 0
+end
+
+argparse 'h/help' 'a/audio' 'p/playback' -- $argv
+
+set -q _flag_help; and print_help_and_exit
+
+set -l path (string join "/" "$HOME/video/recordings" (date '+recording-%F--%H%M%S.mp4'))
+
+# List of flags we want to pass to wf-recorder.
+set -l cmd "-f" $path
+set -q _flag_audio; and set -a cmd "-a"
+
+# Figure out which command was selected
+switch $argv[1]
+  case window
+    set -l coordinates (swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp); or exit 1
+    set -a cmd "-g" $coordinates
+  case grab
+    set -l coordinates (slurp); or exit 1
+    set -a cmd "-g" $coordinates
+  case screen
+  case '*'
+    print_help_and_exit
+end
+
+# Create the folder if it does not exist.
+mkdir -p (dirname $path)
+
+echo Starting recording to $path
+echo Press Ctrl+C to stop
+
+wf-recorder $cmd &>1 /dev/null
+
+set -q _flag_playback; and mpv --loop $path
