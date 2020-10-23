@@ -64,8 +64,6 @@ bindsym $mod+Shift+q kill
 # start your launcher
 bindsym $mod+d exec $menu
 
-bindsym $mod+i exec emoji
-
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -89,6 +87,14 @@ bindsym $mod+Shift+P exec $HOME/.local/bin/lock_and_suspend
 bindsym Print exec $HOME/.local/bin/screenshot
 bindsym Shift+Print exec $HOME/.local/bin/screengrab
 bindsym Alt+Shift+Print exec $HOME/.local/bin/windowgrab
+
+# Record screen
+bindsym $mod+u exec record-rofi
+
+# Copy emoji to clipboard
+bindsym $mod+i exec emoji
+
+# bindsym $mod+ exec record-rofi
 
 #
 # Moving around:

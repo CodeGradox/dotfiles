@@ -1,0 +1,5 @@
+#!/usr/bin/fish
+
+set -l mode (echo -e "screen\nwindow\ngrab" | rofi -dmenu -i -p 'Record:' -no-custom -l 3)
+
+test $status -eq 0; and record $mode --notify

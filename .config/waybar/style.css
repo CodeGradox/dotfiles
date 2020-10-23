@@ -20,15 +20,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -42,7 +33,6 @@ window#waybar.chromium {
     padding: 3px 5px 0px 5px;
     background-color: transparent;
     color: #000000;
-    /* border-bottom: 3px solid transparent; */
     border-radius: 3px;
 }
 
@@ -75,22 +65,19 @@ window#waybar.chromium {
 #cpu,
 #memory,
 #temperature,
-#custom-temperature,
 #backlight,
 #network,
 #pulseaudio,
-#custom-media,
 #tray,
 #idle_inhibitor,
+#custom-media,
+#custom-wf-recorder,
+#custom-temperature,
 #mpd {
     padding: 3px 10px 0 10px;
     margin: 0 4px;
     color: #333333;
     border-radius: 3px;
-}
-
-#clock {
-    /* background-color: #64727D; */
 }
 
 @keyframes blink {
@@ -114,81 +101,24 @@ label:focus {
     background-color: #000000;
 }
 
-#cpu {
-    /* background-color: #2ecc71; */
-    /* color: #000000; */
+#memory.warning {
+    background-color: #ffe085;
 }
 
-#memory {
-    /* background-color: #9b59b6; */
-}
-
-#backlight {
-    /* background-color: #90b1b1; */
-}
-
-#network {
-    /* background-color: #2980b9; */
+#memory.critical {
+    background-color: #ff8787;
 }
 
 #network.disconnected {
     background-color: #f53c3c;
 }
 
-#pulseaudio {
-    /* background-color: #f1c40f; */
-    /* color: #000000; */
+#custom-wf-recorder {
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
-#pulseaudio.muted {
-    /* background-color: #90b1b1; */
-    /* color: #2a5c45; */
-}
-
-#custom-media {
-    /* background-color: #66cc99; */
-    /* color: #2a5c45; */
-    /* min-width: 100px; */
-}
-
-#custom-media.custom-spotify {
-    /* background-color: #66cc99; */
-}
-
-#temperature {
-    /* background-color: #f0932b; */
-}
-
-#temperature.critical {
-    /* background-color: #eb4d4b; */
-}
-
-#tray {
-    background-color: #2980b9;
-}
-
-#idle_inhibitor {
-    /* background-color: #2d3436; */
-}
-
-#idle_inhibitor.activated {
-    /* background-color: #ecf0f1; */
-    /* color: #2d3436; */
-}
-
-#mpd {
-    /* background-color: #66cc99; */
-    /* color: #2a5c45; */
-}
-
-#mpd.disconnected {
-    /* background-color: #f53c3c; */
-}
-
-#mpd.stopped {
-    /* background-color: #90b1b1; */
-}
-
-#mpd.paused {
-    /* background-color: #51a37a; */
+#custom-wf-recorder.recording {
+    background-color: #ff8787;
+    color: #ffffff;
 }
