@@ -108,7 +108,7 @@ font:
     style: Italic
 
   # Point size
-  size: 13.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -435,16 +435,14 @@ debug:
 #   - ~AppKeypad
 #   - AppKeypad
 key_bindings:
+  - { key: Return,   mods: Control,          action: SpawnNewInstance    }
   - { key: V,        mods: Control|Shift,    action: Paste               }
   - { key: C,        mods: Control|Shift,    action: Copy                }
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
-  # - { key: Q,        mods: Command, action: Quit                         }
-  # - { key: W,        mods: Command, action: Quit                         }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Key0,     mods: Control, action: ResetFontSize                }
   - { key: Equals,   mods: Control, action: IncreaseFontSize             }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize             }
   - { key: K,        mods: Alt, action: ScrollPageUp                     }
   - { key: J,        mods: Alt, action: ScrollPageDown                   }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }

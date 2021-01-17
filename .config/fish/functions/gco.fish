@@ -11,5 +11,4 @@ function gco --description "Helper for checking out branches."
     end
 end
 
-complete -c gco -a '(git branch | string trim --left --char=" *")'
-
+# complete -c gco -a '(git branch | string trim --left --char=" *")'

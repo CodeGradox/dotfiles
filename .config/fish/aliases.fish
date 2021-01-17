@@ -1,4 +1,4 @@
-alias gcm="git commit -m"
+# alias gcm="git commit -m"
 alias gp="git push"
 alias gs="git status"
 alias ga="git add"

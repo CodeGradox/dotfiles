@@ -211,11 +211,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Swayidle.
-#
-# Locks the screen after 5 minutes of inactivity. Turns off the screen after 10 min of inactivity. Turns on lockscreen before going to sleep.
-# exec --no-startup-id swayidle -w timeout 600 'swaylock -f' timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f'
-
 # xwayland version
 for_window [class="Firefox"] inhibit_idle fullscreen
 
@@ -263,7 +258,8 @@ input 1133:16495:Logitech_MX_Ergo {
 }
 
 # Scale output for a given moitor.
-# output HDMI-A-1 scale 2
+# Find monitors with 'swaymsg -t get_outputs'
+output 'Unknown U3277WB 0x00000102' scale 1.25
 
 # Open apps in designated workspaces.
 exec firefox
@@ -289,7 +285,10 @@ bar {
 # Mako is the notification daemon.
 exec_always --no-startup-id mako
 
-# Start Udiskie
+# Start Udiskie.
 exec_always --no-startup-id restart-udiskie
+
+# Start swayidle.
+# exec_always --no-startup-id start-swayidle
 
 include /etc/sway/config.d/*

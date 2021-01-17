@@ -3,6 +3,6 @@ function rat
     echo "Running rails tests"
     set_color normal
     set -lx RAILS_ENV test
-    rails test
+    rails test $argv
 end
 

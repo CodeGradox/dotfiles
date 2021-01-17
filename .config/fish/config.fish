@@ -8,8 +8,8 @@ set -gx MOZ_DBUS_REMOTE 1
 set -gx XDG_SESSION_TYPE 'wayland'
 set -gx XDG_SESSION_DESKTOP 'sway'
 set -gx XDG_CURRENT_DESKTOP 'sway'
-# set -gx XDG_CURRENT_DESKTOP 'Unity'
-set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.local/share/google/text-to-speech-credentials.json
+# set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.local/share/google/text-to-speech-credentials.json
+set -gx npm_config_prefix '~/.config/node_modules'
 
 # Load aliases.
 source $HOME/.config/fish/aliases.fish

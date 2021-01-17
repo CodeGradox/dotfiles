@@ -49,9 +49,11 @@ Plugin 'tpope/vim-commentary'
 " Paste to the next line: cV
 Plugin 'christoomey/vim-system-copy'
 
-" Automatically end certain structutes such as 'end' in Ruby
-" and '}' in other languages.
+" Automatically end certain structutes such as 'end' in Ruby.
 Plugin 'tpope/vim-endwise'
+
+" Automatically end quotes, parenthesis, brackets and more.
+Plugin 'raimondi/delimitmate'
 
 """" SYNTAX HIGHLIGHTLING """"
 
@@ -81,6 +83,9 @@ Plugin 'pangloss/vim-javascript'
 
 " Syntax highlight for JSON files.
 Plugin 'elzr/vim-json'
+
+" Svelte, a JS frontend framework.
+Plugin 'evanleck/vim-svelte'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
