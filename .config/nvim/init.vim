@@ -17,7 +17,6 @@ Plugin 'junegunn/fzf.vim'
 
 " Git wrapper for vim.
 Plugin 'tpope/vim-fugitive'
-Plugin 'tommcdo/vim-fubitive'
 
 " Show git diffs inside a file.
 Plugin 'mhinz/vim-signify'
