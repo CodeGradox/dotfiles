@@ -19,3 +19,5 @@ alias du="du -h"
 
 alias ikb="cd ~/git/ikbygg-web"
 alias media="cd /home/media"
+
+alias bat="bat -n"

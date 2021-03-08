@@ -5,9 +5,9 @@ function gco --description "Helper for checking out branches."
         return 1
     end
     if set -q argv[1]
-        git checkout $argv[1]
+        git switch $argv[1]
     else
-        git checkout (git branch -vr | sed 's/origin\///' | fzf | awk '{ print $1 }')
+        git switch (git branch -vr | sed 's/origin\///' | fzf | awk '{ print $1 }')
     end
 end
 
