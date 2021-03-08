@@ -257,9 +257,14 @@ input 1133:16495:Logitech_MX_Ergo {
     accel_profile adaptive
 }
 
+#
 # Scale output for a given moitor.
 # Find monitors with 'swaymsg -t get_outputs'
-output 'Unknown U3277WB 0x00000102' scale 1.25
+# Man page: man 5 sway-output
+#
+output 'Unknown U3277WB 0x00000102' {
+  scale 1
+}
 
 # Open apps in designated workspaces.
 exec firefox
