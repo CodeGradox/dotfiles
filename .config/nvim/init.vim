@@ -95,7 +95,7 @@ let mapleader = " "
 
 " Maps Leader+p to run :Files (fzf).
 map <leader>p :Files<Cr>
-map <leader>o :Rg<Cr>
+map <leader>o :Rgi<Cr>
 
 " Make it easier to switch windows.
 nnoremap <C-h> <C-w>h
@@ -109,7 +109,7 @@ tnoremap <C-q> <C-\><C-n>
 " Highlight certain characters.
 " set list
 " Highlights weird whitespaces such as 0x00A0 non-breaking space.
-" set listchars=nbsp:¿
+set listchars=nbsp:¿
 
 " Enable syntax highlight
 syntax on
@@ -160,6 +160,14 @@ autocmd BufWritePre * %s/\s\+$//e
 "   Example: :Rg mytem -g '*.md'
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
 
+" Interactive search with ripgrep and preview with fzf.
+" https://sidneyliebrand.io/blog/how-fzf-and-ripgrep-improved-my-workflow?source=post_page
+command! -bang -nargs=* Rgi
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%'),
+  \   <bang>0)
+
 """"" Plugin settings """""
 
 " Signify, the git diff plugin.
@@ -190,40 +198,3 @@ let g:rails_projections = {
   \ 'lib/tasks/*.thor': { 'command': 'task' }
   \ }
 
-" Based on https://developpaper.com/use-the-floating-window-of-neovim-to-make-you-fall-in-love-with-fzf-again
-" and https://github.com/neovim/neovim/pull/6619
-function! OpenFloatWin()
-  let height = &lines - 3
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let col = float2nr((&columns - width) / 2)
-
-  " Set the position, size, etc. of the floating window.
-  " The size configuraion here may not be so flexible, and there's room for
-  " further improvement.
-  let opts = {
-    \ 'relative': 'editor',
-    \ 'row': height * 0.3,
-    \ 'col': col + 30,
-    \ 'width': width * 2 / 3,
-    \ 'height': height / 2
-    \ }
-
-  let buf = nvim_create_buf(v:false, v:true)
-  let win = nvim_open_win(buf, v:true, opts)
-
-  " Set Floating Window Highlighting
-  call setwinvar(win, '&winhl', 'Normal:Pmeny')
-
-  setlocal
-    \ buftype=nofile
-    \ nobuflisted
-    \ bufhidden=hide
-    \ nonumber
-    \ norelativenumber
-    \ signcolumn=no
-
-  set winhl=Normal:Floating
-  hi Floating guibg=#F2F3F5
-endfunction
-
-" let g:fzf_layout = { 'window': 'call OpenFloatWin()' }
