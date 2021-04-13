@@ -235,7 +235,7 @@ bindsym XF86AudioPlay exec playerctl -p spotify play-pause
 bindsym XF86AudioStop exec playerctl -p spotify stop
 bindsym XF86AudioNext exec playerctl -p spotify next
 bindsym XF86AudioPrev exec playerctl -p spotify previous
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.usb-Audioengine_Audioengine_D1-00.analog-stereo toggle
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #
 # Swap Left Alt with Left Ctrl.
