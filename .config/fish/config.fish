@@ -32,6 +32,6 @@ function fish_greeting; end
 
 # Keep this at the bottom of the file!
 # Starts sway if we are using tty1.
-if status --is-login; and test -z "$DISPLAY" -a $XDG_VTNR = 1
+if status --is-login; and test -z "$DISPLAY" -a "$XDG_VTNR" = 1
   sway
 end
