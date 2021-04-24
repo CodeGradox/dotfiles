@@ -6,6 +6,11 @@ function fish_prompt --description="Custom terminal prompt"
 
     # echo -ns $user '@' $machine ' ' $directory
 
+    # If there is a SSH session...
+    if test -n "$SSH_CLIENT"
+      echo -ns (set_color '#FF748C') (whoami) '@' (hostname) ' (ssh)' (set_color normal) ' '
+    end
+
     echo -ns [ $directory ] $chevron
 
     if test (git status --porcelain 2>/dev/null | wc -l) -eq 0
