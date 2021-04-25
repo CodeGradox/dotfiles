@@ -5,6 +5,7 @@ alias ga="git add"
 alias gaa="git add ."
 alias glog="git log"
 alias gst="git status"
+alias config="/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME"
 
 alias stl="sudo systemctl"
 alias reload="source $HOME/.config/fish/config.fish"
