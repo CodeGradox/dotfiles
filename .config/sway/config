@@ -78,7 +78,7 @@ bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exit
 
 # Lockscreen.
-bindsym $mod+P exec swaylock
+bindsym $mod+P exec 'swaylock'
 
 # Lock and suspend.
 bindsym $mod+Shift+P exec $HOME/.local/bin/lock_and_suspend
