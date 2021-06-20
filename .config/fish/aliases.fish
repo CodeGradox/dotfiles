@@ -18,7 +18,7 @@ alias free="free -h"
 alias df="df -h"
 alias du="du -h"
 
-alias ikb="cd ~/git/ikbygg-web"
+alias ikb="cd ~/projects/ikbygg-web"
 alias media="cd /home/media"
 
 alias bat="bat -n"
