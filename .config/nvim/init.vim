@@ -8,15 +8,46 @@ call vundle#begin()
 " Enchance netrw
 Plugin 'tpope/vim-vinegar'
 
+" Git wrapper for vim.
+Plugin 'tpope/vim-fugitive'
+
+" Easily manage surrounding parentheses, brackets, quoutes, HTML tags and more.
+" Keys: cs<char_from><char_to>
+" Example: cs"' to change surrounding " to '
+Plugin 'tpope/vim-surround'
+
+" Automatically end certain structutes such as 'end' in Ruby.
+Plugin 'tpope/vim-endwise'
+
+" Comment stuff out.
+" Keys: gc
+" Uncomment: gcgc
+Plugin 'tpope/vim-commentary'
+
+" Extends support for abbreviations, substitutions and coercions.
+" Abbreviation: Create powerful abbreviations
+" Abolish will include upper and lower case words.
+" Substitution: Better :s and :%s command
+" :%s/facility/building/g will not convert plural and singular versions of the
+" words. Subvert/facilit{y,ies}/building{,s}/g will substitute the words
+" correcly.
+" Coercion: Convert word from one case to another.
+" crs       - snake_case
+" crm       - MixedCase
+" crc       - camelCase
+" cru       - UPPER_CASE
+" cr-       - dash-case
+" cr.       - dot.case
+" cr<space> - space case
+" crt       - Title Case
+Plugin 'tpope/vim-abolish'
+
 " Colorschemes
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 
 " FZF integration.
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-
-" Git wrapper for vim.
-Plugin 'tpope/vim-fugitive'
 
 " Show git diffs inside a file.
 Plugin 'mhinz/vim-signify'
@@ -31,16 +62,6 @@ Plugin 'vim-airline/vim-airline-themes'
 " Visualize indentation.
 Plugin 'Yggdroot/indentLine'
 
-" Easily manage surrounding parentheses, brackets, quoutes, HTML tags and more.
-" Keys: cs<char_from><char_to>
-" Example: cs"' to change surrounding " to '
-Plugin 'tpope/vim-surround'
-
-" Comment stuff out.
-" Keys: gc
-" Uncomment: gcgc
-Plugin 'tpope/vim-commentary'
-
 " Vim mappings for copying/pasting text to the os specific clipboard.
 " Copy: cp
 " Copy line: cP
@@ -48,11 +69,12 @@ Plugin 'tpope/vim-commentary'
 " Paste to the next line: cV
 Plugin 'christoomey/vim-system-copy'
 
-" Automatically end certain structutes such as 'end' in Ruby.
-Plugin 'tpope/vim-endwise'
-
 " Automatically end quotes, parenthesis, brackets and more.
 Plugin 'raimondi/delimitmate'
+
+" Highlight cells in CSV files.
+" Allows me to query data in CSV with a SQL like syntax.
+Plugin 'mechatroner/rainbow_csv'
 
 """" SYNTAX HIGHLIGHTLING """"
 
@@ -104,10 +126,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 tnoremap <C-q> <C-\><C-n>
 
-" set path+=**
-
 " Highlight certain characters.
-" set list
+set list
 " Highlights weird whitespaces such as 0x00A0 non-breaking space.
 set listchars=nbsp:¿
 
@@ -139,8 +159,19 @@ set wildmode=longest:full,full
 " https://github.com/vim/vim/issues/2049#issuecomment-494923065
 set mmp=5000
 
-autocmd Filetype rs setlocal tabstop=4 shiftwidth=4 softtabstop=4
+" Highlight and show substitutions incrementally as you write them.
+set inccommand=split
 
+" Overwrite global rules for certain filetypes.
+autocmd Filetype rs setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd BufNewFile,BufRead *.caracal set syntax=ruby
+" Tell CSV rainbow we like to separtate columns with commas.
+autocmd BufNewFile,BufRead *.csv set filetype=csv
+
+" Abbreviations
+iabbrev laft LAFT
+
+" Color schemes
 colorscheme onehalflight
 let g:airline_theme="papercolor"
 " let g:airline#extensions#tabline#enabled = 1
@@ -190,6 +221,7 @@ let g:system_copy#paste_command='wl-paste'
 let g:rails_projections = {
   \ 'app/javascript/packs/*.js': { 'command': 'pack' },
   \ 'app/javascript/controllers/*.js': { 'command': 'stimulus' },
+  \ 'app/javascript/apps/*.vue': { 'command': 'apps' },
   \ 'app/services/*.rb': { 'command': 'service' },
   \ 'app/datatables/*_datatable.rb': { 'command': 'datatable' },
   \ 'test/models/*_test.rb': { 'command': 'test' },
@@ -197,4 +229,3 @@ let g:rails_projections = {
   \ 'test/factories/*.rb': { 'command': 'factory' },
   \ 'lib/tasks/*.thor': { 'command': 'task' }
   \ }
-
