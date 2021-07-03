@@ -1,28 +1,24 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=/usr/share/vim/vimfiles/autoload/vundle.vim
-call vundle#begin()
+" Vimrc sample for how to use vim-plug: /usr/share/vim-plug/vimrc.sample
+call plug#begin('~/.vim/plugged')
 
 " Enchance netrw
-Plugin 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 
 " Git wrapper for vim.
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Easily manage surrounding parentheses, brackets, quoutes, HTML tags and more.
 " Keys: cs<char_from><char_to>
 " Example: cs"' to change surrounding " to '
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Automatically end certain structutes such as 'end' in Ruby.
-Plugin 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 
 " Comment stuff out.
 " Keys: gc
 " Uncomment: gcgc
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " Extends support for abbreviations, substitutions and coercions.
 " Abbreviation: Create powerful abbreviations
@@ -40,77 +36,65 @@ Plugin 'tpope/vim-commentary'
 " cr.       - dot.case
 " cr<space> - space case
 " crt       - Title Case
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 
 " Colorschemes
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " FZF integration.
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Telescope, a highly extendable fuzzy finder.
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Show git diffs inside a file.
-Plugin 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 
 " Syntaxchecker.
-Plugin 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 " Status/tabline, at the bottom of the editor.
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Visualize indentation.
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 " Vim mappings for copying/pasting text to the os specific clipboard.
 " Copy: cp
 " Copy line: cP
 " Paste: cv
 " Paste to the next line: cV
-Plugin 'christoomey/vim-system-copy'
+Plug 'christoomey/vim-system-copy'
 
 " Automatically end quotes, parenthesis, brackets and more.
-Plugin 'raimondi/delimitmate'
+Plug 'raimondi/delimitmate'
 
 " Highlight cells in CSV files.
 " Allows me to query data in CSV with a SQL like syntax.
-Plugin 'mechatroner/rainbow_csv'
+Plug 'mechatroner/rainbow_csv'
+
+" Enable treesitter. It's still considered experimental.
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 """" SYNTAX HIGHLIGHTLING """"
 
-" Vim syntax highlight.
-Plugin 'dag/vim-fish'
+" Fish shell.
+Plug 'dag/vim-fish'
 
 " Slim template language.
-Plugin 'slim-template/vim-slim'
-
-" Support for Ruby.
-Plugin 'vim-ruby/vim-ruby'
+Plug 'slim-template/vim-slim'
 
 " Support for Ruby on Rails.
-Plugin 'tpope/vim-rails'
-
-" Syntax highlight for Vue files.
-Plugin 'posva/vim-vue'
+Plug 'tpope/vim-rails'
 
 " Syntax highlight for Pug templates inside Vue files.
-Plugin 'digitaltoad/vim-pug'
+Plug 'digitaltoad/vim-pug'
 
-" Rust extension.
-Plugin 'rust-lang/rust.vim'
-
-" Syntax highlight for Javascript files.
-Plugin 'pangloss/vim-javascript'
-
-" Syntax highlight for JSON files.
-Plugin 'elzr/vim-json'
-
-" Svelte, a JS frontend framework.
-Plugin 'evanleck/vim-svelte'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Map leader key to space.
 let mapleader = " "
@@ -129,7 +113,7 @@ tnoremap <C-q> <C-\><C-n>
 " Highlight certain characters.
 set list
 " Highlights weird whitespaces such as 0x00A0 non-breaking space.
-set listchars=nbsp:¿
+set listchars=tab:>\ ,extends:>,precedes:<,nbsp:¿
 
 " Enable syntax highlight
 syntax on
@@ -165,6 +149,7 @@ set inccommand=split
 " Overwrite global rules for certain filetypes.
 autocmd Filetype rs setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.caracal set syntax=ruby
+autocmd BufNewFile,BufRead *.thor set syntax=ruby
 " Tell CSV rainbow we like to separtate columns with commas.
 autocmd BufNewFile,BufRead *.csv set filetype=csv
 
@@ -175,9 +160,6 @@ iabbrev ammount amount
 " Color schemes
 colorscheme onehalflight
 let g:airline_theme="papercolor"
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#formatter = 'unique_tail'
-" let g:airline#extensions#tabline#buffer_nr_show = 1
 " Disable nvim background
 hi Normal guibg=NONE
 
@@ -191,14 +173,6 @@ autocmd BufWritePre * %s/\s\+$//e
 " Allow pasting optional flags into the Rg command.
 "   Example: :Rg mytem -g '*.md'
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
-
-" Interactive search with ripgrep and preview with fzf.
-" https://sidneyliebrand.io/blog/how-fzf-and-ripgrep-improved-my-workflow?source=post_page
-command! -bang -nargs=* Rgi
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%'),
-  \   <bang>0)
 
 """"" Plugin settings """""
 
@@ -216,6 +190,7 @@ let g:ale_sign_warning = '✘ '
 " Should make vim-vue faster by not loading all processors at once.
 let g:vue_pre_processors='detect_on_enter'
 
+" Use Sway spesific clipboard.
 let g:system_copy#copy_command='wl-copy'
 let g:system_copy#paste_command='wl-paste'
 
