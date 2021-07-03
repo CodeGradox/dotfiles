@@ -170,6 +170,7 @@ autocmd BufNewFile,BufRead *.csv set filetype=csv
 
 " Abbreviations
 iabbrev laft LAFT
+iabbrev ammount amount
 
 " Color schemes
 colorscheme onehalflight
