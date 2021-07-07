@@ -1,6 +1,13 @@
 " Vimrc sample for how to use vim-plug: /usr/share/vim-plug/vimrc.sample
 call plug#begin('~/.vim/plugged')
 
+Plug 'neovim/nvim-lspconfig'
+
+" Enable treesitter. It's still considered experimental.
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Plug 'glepnir/lspsaga.nvim'
+
 " Enchance netrw
 Plug 'tpope/vim-vinegar'
 
@@ -76,9 +83,6 @@ Plug 'raimondi/delimitmate'
 " Highlight cells in CSV files.
 " Allows me to query data in CSV with a SQL like syntax.
 Plug 'mechatroner/rainbow_csv'
-
-" Enable treesitter. It's still considered experimental.
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 """" SYNTAX HIGHLIGHTLING """"
 
