@@ -6,10 +6,7 @@ set -gx RAILS_ENV 'development'
 set -gx MOZ_ENABLE_WAYLAND 1
 set -gx MOZ_DBUS_REMOTE 1
 set -gx XDG_SESSION_TYPE 'wayland'
-set -gx XDG_SESSION_DESKTOP 'sway'
-set -gx XDG_CURRENT_DESKTOP 'sway'
 set -gx BAT_THEME 'OneHalfLight'
-# set -gx GOOGLE_APPLICATION_CREDENTIALS $HOME/.local/share/google/text-to-speech-credentials.json
 set -gx npm_config_prefix '~/.config/node_modules'
 
 # Load aliases.
@@ -29,9 +26,3 @@ end
 
 # Disables the default fish greeting.
 function fish_greeting; end
-
-# Keep this at the bottom of the file!
-# Starts sway if we are using tty1.
-if status --is-login; and test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-  sway
-end
