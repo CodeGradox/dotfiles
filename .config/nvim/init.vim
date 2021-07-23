@@ -48,10 +48,6 @@ Plug 'tpope/vim-abolish'
 " Colorschemes
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
-" FZF integration.
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
 " Telescope, a highly extendable fuzzy finder.
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -103,9 +99,9 @@ call plug#end()
 " Map leader key to space.
 let mapleader = " "
 
-" Maps Leader+p to run :Files (fzf).
-map <leader>p :Files<Cr>
-map <leader>o :Rgi<Cr>
+" Find files using Telescope command-line sugar.
+map <leader>p :Telescope find_files<cr>
+map <leader>o :Telescope live_grep<cr>
 
 " Make it easier to switch windows.
 nnoremap <C-h> <C-w>h
@@ -162,6 +158,7 @@ iabbrev laft LAFT
 iabbrev ammount amount
 
 " Color schemes
+set background=light
 colorscheme onehalflight
 let g:airline_theme="papercolor"
 " Disable nvim background
@@ -193,10 +190,6 @@ let g:ale_sign_warning = '✘ '
 
 " Should make vim-vue faster by not loading all processors at once.
 let g:vue_pre_processors='detect_on_enter'
-
-" Use Sway spesific clipboard.
-let g:system_copy#copy_command='wl-copy'
-let g:system_copy#paste_command='wl-paste'
 
 let g:rails_projections = {
   \ 'app/javascript/packs/*.js': { 'command': 'pack' },
