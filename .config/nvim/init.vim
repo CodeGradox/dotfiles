@@ -57,11 +57,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'mhinz/vim-signify'
 
 " Syntaxchecker.
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 " Status/tabline, at the bottom of the editor.
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'hoob3rt/lualine.nvim'
 
 " Visualize indentation.
 Plug 'Yggdroot/indentLine'
@@ -160,11 +159,33 @@ iabbrev ammount amount
 " Color schemes
 set background=light
 colorscheme onehalflight
-let g:airline_theme="papercolor"
 " Disable nvim background
 hi Normal guibg=NONE
 
-" indentLine
+" The status bar at the bottom of the window.
+lua << EOF
+require('lualine').setup {
+  options = {
+    theme = 'ayu_light',
+  },
+  sections = {
+    lualine_b = {
+      'branch',
+      'diff',
+    },
+    lualine_x = {
+      'encoding',
+      {
+        'fileformat',
+        icons_enabled = false
+      },
+      'filetype',
+    }
+  },
+  extensions = { 'fugitive' },
+}
+EOF
+
 let g:indentLine_char = '┆'
 
 " Trim trailing whitespace on save
@@ -174,6 +195,13 @@ autocmd BufWritePre * %s/\s\+$//e
 " Allow pasting optional flags into the Rg command.
 "   Example: :Rg mytem -g '*.md'
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
+
+""""" Language Server Protocol (LSP) """""
+
+" gem install solargraph
+lua require 'lspconfig'.solargraph.setup{}
+" npm -g install typescript typescript-language-server
+lua require 'lspconfig'.tsserver.setup{}
 
 """"" Plugin settings """""
 
