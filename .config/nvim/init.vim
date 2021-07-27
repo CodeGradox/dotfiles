@@ -99,8 +99,9 @@ call plug#end()
 let mapleader = " "
 
 " Find files using Telescope command-line sugar.
-map <leader>p :Telescope find_files<cr>
+map <leader>p :Telescope git_files<cr>
 map <leader>o :Telescope live_grep<cr>
+map <leader>gco :Telescope git_branches<cr>
 
 " Make it easier to switch windows.
 nnoremap <C-h> <C-w>h
@@ -137,10 +138,6 @@ set splitbelow
 set lazyredraw
 set wildmenu
 set wildmode=longest:full,full
-
-" Helps with some styles breaking on some files (scss).
-" https://github.com/vim/vim/issues/2049#issuecomment-494923065
-set mmp=5000
 
 " Highlight and show substitutions incrementally as you write them.
 set inccommand=split
@@ -192,11 +189,6 @@ let g:indentLine_char = '┆'
 
 " Trim trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
-
-" Custom commands
-" Allow pasting optional flags into the Rg command.
-"   Example: :Rg mytem -g '*.md'
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
 
 """"" Language Server Protocol (LSP) """""
 
