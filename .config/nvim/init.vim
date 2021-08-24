@@ -6,7 +6,9 @@ Plug 'neovim/nvim-lspconfig'
 " Enable treesitter. It's still considered experimental.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" Plug 'glepnir/lspsaga.nvim'
+" A light-weight lsp plugin based on neovim built-in lsp with highly a
+" performant UI.
+Plug 'glepnir/lspsaga.nvim'
 
 " Enchance netrw
 Plug 'tpope/vim-vinegar'
@@ -56,14 +58,11 @@ Plug 'nvim-telescope/telescope.nvim'
 " Show git diffs inside a file.
 Plug 'mhinz/vim-signify'
 
-" Syntaxchecker.
-" Plug 'dense-analysis/ale'
-
 " Status/tabline, at the bottom of the editor.
 Plug 'hoob3rt/lualine.nvim'
 
 " Visualize indentation.
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Vim mappings for copying/pasting text to the os specific clipboard.
 " Copy: cp
@@ -148,6 +147,8 @@ autocmd BufNewFile,BufRead *.caracal set syntax=ruby
 autocmd BufNewFile,BufRead *.thor set syntax=ruby
 " Tell CSV rainbow we like to separtate columns with commas.
 autocmd BufNewFile,BufRead *.csv set filetype=csv
+" Trim trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
 
 " Abbreviations
 iabbrev laft LAFT
@@ -159,8 +160,8 @@ colorscheme onehalflight
 " Disable nvim background
 hi Normal guibg=NONE
 
-" The status bar at the bottom of the window.
 lua << EOF
+-- The status bar at the bottom of the window.
 require('lualine').setup {
   options = {
     theme = 'ayu_light',
@@ -183,19 +184,25 @@ require('lualine').setup {
   },
   extensions = { 'fugitive' },
 }
+
+----- Language Server Protocol (LSP) -----
+
+-- gem install solargraph
+require 'lspconfig'.solargraph.setup{}
+
+-- npm -g install typescript typescript-language-server
+require 'lspconfig'.tsserver.setup{}
+
+-- npm -g install vls
+require 'lspconfig'.vuels.setup{
+  settings = {
+    vetur = {
+      -- Vls requires a jsconfig.json or tsconfig.json. Ignore that requirement.
+      ignoreProjectWarning = true
+    }
+  }
+}
 EOF
-
-let g:indentLine_char = '┆'
-
-" Trim trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
-
-""""" Language Server Protocol (LSP) """""
-
-" gem install solargraph
-lua require 'lspconfig'.solargraph.setup{}
-" npm -g install typescript typescript-language-server
-lua require 'lspconfig'.tsserver.setup{}
 
 """"" Plugin settings """""
 
