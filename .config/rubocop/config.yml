@@ -1,0 +1,34 @@
+# Don't suggest changing double quoted strings to single quoted strings if they
+# don't contain string interpolation.
+Style/StringLiterals:
+  Enabled: false
+
+# All files in Rails are treated as having a frozen string literal comment.
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Set max line length to 120 characters.
+Layout/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 25
+
+# This cop checks the indentation of the method name part in method calls that
+# span more than one line.
+# Indented forces the following convention
+#   while myvariable
+#     .a
+#     .b
+#   end
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+
+# Use trailing commas in multi-line argument lists.
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
