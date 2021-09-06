@@ -173,6 +173,13 @@ require('lualine').setup {
       'branch',
       'diff',
     },
+    lualine_c = {
+      {
+        'filename',
+        -- Show relative path.
+        path = 1,
+      }
+    },
     lualine_x = {
       'encoding',
       {
