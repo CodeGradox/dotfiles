@@ -21,7 +21,7 @@ status --is-interactive; and source (rbenv init -|psub)
 
 # Enable FZF keybindings.
 function fish_user_key_bindings
-    fzf_key_bindings
+  fzf_key_bindings
 end
 
 # Disables the default fish greeting.
