@@ -8,7 +8,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " A light-weight lsp plugin based on neovim built-in lsp with highly a
 " performant UI.
-Plug 'glepnir/lspsaga.nvim'
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
 " Enchance netrw
 Plug 'tpope/vim-vinegar'
@@ -51,9 +51,10 @@ Plug 'tpope/vim-abolish'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Telescope, a highly extendable fuzzy finder.
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+" Native C port of fzf.
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make', 'branch': 'main' }
 
 " Show git diffs inside a file.
 Plug 'mhinz/vim-signify'
@@ -191,6 +192,22 @@ require('lualine').setup {
   },
   extensions = { 'fugitive' },
 }
+
+-- Telescope
+
+require 'telescope'.setup{
+  pickers = {
+    live_grep = {
+      theme = "dropdown"
+    },
+    git_files = {
+      theme = "dropdown"
+    }
+  }
+}
+
+-- Telescope extensions.
+require('telescope').load_extension('fzf')
 
 ----- Language Server Protocol (LSP) -----
 
