@@ -207,7 +207,14 @@ require 'telescope'.setup{
 }
 
 -- Telescope extensions.
-require('telescope').load_extension('fzf')
+require'telescope'.load_extension('fzf')
+
+-- Indent Blankline
+
+require'indent_blankline'.setup{
+  space_char_blankline = " ",
+  show_current_context = true,
+}
 
 ----- Language Server Protocol (LSP) -----
 
