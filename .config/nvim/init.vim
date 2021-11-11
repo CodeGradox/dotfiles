@@ -48,7 +48,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
 
 " Colorschemes
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
+Plug 'CodeGradox/onehalf-lush', { 'branch': 'main' }
+" Plug '~/projects/onehalf-lush'
 
 " Telescope, a highly extendable fuzzy finder.
 Plug 'nvim-lua/plenary.nvim'
@@ -88,10 +90,7 @@ Plug 'dag/vim-fish'
 Plug 'slim-template/vim-slim'
 
 " Support for Ruby on Rails.
-Plug 'tpope/vim-rails'
-
-" Syntax highlight for Pug templates inside Vue files.
-Plug 'digitaltoad/vim-pug'
+" Plug 'tpope/vim-rails'
 
 call plug#end()
 
@@ -157,11 +156,20 @@ iabbrev ammount amount
 
 " Color schemes
 set background=light
-colorscheme onehalflight
+colorscheme onehalf-lush
 " Disable nvim background
 hi Normal guibg=NONE
 
 lua << EOF
+-- Configure treesitter
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    -- Enable better syntax highlights.
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 -- The status bar at the bottom of the window.
 require('lualine').setup {
   options = {
@@ -214,6 +222,7 @@ require'telescope'.load_extension('fzf')
 require'indent_blankline'.setup{
   space_char_blankline = " ",
   show_current_context = true,
+  -- show_trailing_blankline_indent = false,
 }
 
 ----- Language Server Protocol (LSP) -----
@@ -236,6 +245,9 @@ require 'lspconfig'.vuels.setup{
 EOF
 
 """"" Plugin settings """""
+
+" Disable the built in Ruby provider. Use LSP instead.
+let g:loaded_ruby_provider = 0
 
 " Signify, the git diff plugin.
 let g:signify_sign_add = "▋"
