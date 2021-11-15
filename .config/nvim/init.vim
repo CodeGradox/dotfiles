@@ -1,6 +1,8 @@
 " Vimrc sample for how to use vim-plug: /usr/share/vim-plug/vimrc.sample
 call plug#begin('~/.vim/plugged')
 
+" A collection of common configurations for Neovim's built-in language server
+" client.
 Plug 'neovim/nvim-lspconfig'
 
 " Enable treesitter. It's still considered experimental.
@@ -77,11 +79,11 @@ Plug 'christoomey/vim-system-copy'
 " Automatically end quotes, parenthesis, brackets and more.
 Plug 'raimondi/delimitmate'
 
+"""" SYNTAX HIGHLIGHTLING """"
+
 " Highlight cells in CSV files.
 " Allows me to query data in CSV with a SQL like syntax.
 Plug 'mechatroner/rainbow_csv'
-
-"""" SYNTAX HIGHLIGHTLING """"
 
 " Fish shell.
 Plug 'dag/vim-fish'
@@ -201,17 +203,20 @@ require('lualine').setup {
   extensions = { 'fugitive' },
 }
 
--- Telescope
-
-require 'telescope'.setup{
+-- Telescope, the fuzzy-finder
+require('telescope').setup{
+  defaults = {},
   pickers = {
-    live_grep = {
+    find_files = {
       theme = "dropdown"
     },
     git_files = {
       theme = "dropdown"
-    }
-  }
+    },
+    live_grep = {
+      theme = "dropdown"
+    },
+  },
 }
 
 -- Telescope extensions.
@@ -222,10 +227,16 @@ require'telescope'.load_extension('fzf')
 require'indent_blankline'.setup{
   space_char_blankline = " ",
   show_current_context = true,
-  -- show_trailing_blankline_indent = false,
 }
 
 ----- Language Server Protocol (LSP) -----
+
+-- gem install solargraph
+require 'lspconfig'.solargraph.setup{
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
 
 -- gem install solargraph
 require 'lspconfig'.solargraph.setup{}
@@ -246,7 +257,8 @@ EOF
 
 """"" Plugin settings """""
 
-" Disable the built in Ruby provider. Use LSP instead.
+" Disable the buildt in Ruby provider to speed up startup times.
+" LSP will handle Ruby files anyway.
 let g:loaded_ruby_provider = 0
 
 " Signify, the git diff plugin.
@@ -255,10 +267,6 @@ let g:signify_sign_delete = "▋"
 let g:signify_sign_delete_first_line = "▋"
 let g:signify_sign_change = "▋"
 let g:signify_sign_chak = "▋"
-
-" Ale settings.
-let g:ale_sign_error = '✘ '
-let g:ale_sign_warning = '✘ '
 
 " Should make vim-vue faster by not loading all processors at once.
 let g:vue_pre_processors='detect_on_enter'
