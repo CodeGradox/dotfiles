@@ -79,6 +79,9 @@ Plug 'christoomey/vim-system-copy'
 " Automatically end quotes, parenthesis, brackets and more.
 Plug 'raimondi/delimitmate'
 
+"
+Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
+
 """" SYNTAX HIGHLIGHTLING """"
 
 " Highlight cells in CSV files.
@@ -142,6 +145,9 @@ set wildmode=longest:full,full
 
 " Highlight and show substitutions incrementally as you write them.
 set inccommand=split
+
+" Make nvim use ripgrep when calling :grep.
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 " Overwrite global rules for certain filetypes.
 autocmd Filetype rs setlocal tabstop=4 shiftwidth=4 softtabstop=4
