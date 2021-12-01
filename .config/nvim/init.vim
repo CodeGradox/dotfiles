@@ -10,7 +10,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " A light-weight lsp plugin based on neovim built-in lsp with highly a
 " performant UI.
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+Plug 'glepnir/lspsaga.nvim'
 
 " Enchance netrw
 Plug 'tpope/vim-vinegar'
@@ -50,8 +50,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
 
 " Colorschemes
-Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
-Plug 'CodeGradox/onehalf-lush', { 'branch': 'main' }
+Plug 'rktjmp/lush.nvim'
+Plug 'CodeGradox/onehalf-lush'
 " Plug '~/projects/onehalf-lush'
 
 " Telescope, a highly extendable fuzzy finder.
@@ -80,7 +80,10 @@ Plug 'christoomey/vim-system-copy'
 Plug 'raimondi/delimitmate'
 
 "
-Plug 'ggandor/lightspeed.nvim', { 'branch': 'main' }
+Plug 'ggandor/lightspeed.nvim'
+
+"
+Plug 'folke/trouble.nvim'
 
 """" SYNTAX HIGHLIGHTLING """"
 
@@ -229,10 +232,21 @@ require('telescope').setup{
 require'telescope'.load_extension('fzf')
 
 -- Indent Blankline
-
 require'indent_blankline'.setup{
   space_char_blankline = " ",
   show_current_context = true,
+}
+
+
+-- Trouble
+require("trouble").setup{
+  icons = false,
+  signs = {
+    error = "omg",
+    warning = "hmm",
+    hint = "hey",
+    information = "fyi",
+  },
 }
 
 ----- Language Server Protocol (LSP) -----
