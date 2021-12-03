@@ -132,7 +132,6 @@ set cursorline
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
-set encoding=utf-8
 set expandtab
 set smartindent
 set ignorecase
@@ -143,7 +142,6 @@ set splitright
 " Horisontal split to the left
 set splitbelow
 set lazyredraw
-set wildmenu
 set wildmode=longest:full,full
 
 " Highlight and show substitutions incrementally as you write them.
