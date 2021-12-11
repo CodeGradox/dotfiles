@@ -8,10 +8,6 @@ Plug 'neovim/nvim-lspconfig'
 " Enable treesitter. It's still considered experimental.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" A light-weight lsp plugin based on neovim built-in lsp with highly a
-" performant UI.
-Plug 'glepnir/lspsaga.nvim'
-
 " Enchance netrw
 Plug 'tpope/vim-vinegar'
 
@@ -79,10 +75,12 @@ Plug 'christoomey/vim-system-copy'
 " Automatically end quotes, parenthesis, brackets and more.
 Plug 'raimondi/delimitmate'
 
-"
+" An motion plugin for neovim.
 Plug 'ggandor/lightspeed.nvim'
 
-"
+" A pretty list for showing diagnostics, references, telescope results,
+" quickfix and location lists to help you solve all the trouble your code is
+" causing.
 Plug 'folke/trouble.nvim'
 
 """" SYNTAX HIGHLIGHTLING """"
@@ -91,14 +89,11 @@ Plug 'folke/trouble.nvim'
 " Allows me to query data in CSV with a SQL like syntax.
 Plug 'mechatroner/rainbow_csv'
 
-" Fish shell.
-Plug 'dag/vim-fish'
-
 " Slim template language.
 Plug 'slim-template/vim-slim'
 
 " Support for Ruby on Rails.
-" Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 
 call plug#end()
 
@@ -109,6 +104,12 @@ let mapleader = " "
 map <leader>p :Telescope git_files<cr>
 map <leader>o :Telescope live_grep<cr>
 map <leader>gco :Telescope git_branches<cr>
+
+" Quickfix list shortcuts.
+" Next item.
+map <leader>j :cn<CR>
+" Previous item.
+map <leader>k :cp<CR>
 
 " Make it easier to switch windows.
 nnoremap <C-h> <C-w>h
@@ -160,7 +161,6 @@ autocmd BufNewFile,BufRead *.csv set filetype=csv
 autocmd BufWritePre * %s/\s\+$//e
 
 " Abbreviations
-iabbrev laft LAFT
 iabbrev ammount amount
 
 " Color schemes
