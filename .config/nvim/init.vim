@@ -118,6 +118,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 tnoremap <C-q> <C-\><C-n>
 
+" Shift + J/K moves selected lines down/up in visual mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Highlight certain characters.
 set list
 " Highlights weird whitespaces such as 0x00A0 non-breaking space.
