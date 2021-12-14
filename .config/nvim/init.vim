@@ -166,6 +166,8 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Abbreviations
 iabbrev ammount amount
+iabbrev desciption description
+iabbrev recieve receive
 
 " Color schemes
 set background=light
