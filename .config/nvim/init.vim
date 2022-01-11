@@ -219,10 +219,12 @@ require('telescope').setup{
   defaults = {},
   pickers = {
     find_files = {
-      theme = "dropdown"
+      theme = "dropdown",
+      previewer = false,
     },
     git_files = {
-      theme = "dropdown"
+      theme = "dropdown",
+      previewer = false,
     },
     live_grep = {
       theme = "dropdown"
