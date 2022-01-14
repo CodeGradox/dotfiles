@@ -75,7 +75,10 @@ Plug 'christoomey/vim-system-copy'
 " Automatically end quotes, parenthesis, brackets and more.
 Plug 'raimondi/delimitmate'
 
-" An motion plugin for neovim.
+" A cutting-edge motion plugin.
+" Invoke with 's'.
+" To delete, invoke with 'dz', then follow up with the pattern.
+" To find, invoke with 'f'.
 Plug 'ggandor/lightspeed.nvim'
 
 " A pretty list for showing diagnostics, references, telescope results,
