@@ -1,6 +1,6 @@
 function rac
     set_color red
-    echo "Starting rails console -e development"
+    echo "Starting rails console"
     set_color normal
-    rails console -e development
+    rails console
 end
