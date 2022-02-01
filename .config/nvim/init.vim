@@ -267,9 +267,6 @@ require 'lspconfig'.solargraph.setup{
   }
 }
 
--- gem install solargraph
-require 'lspconfig'.solargraph.setup{}
-
 -- npm -g install typescript typescript-language-server
 require 'lspconfig'.tsserver.setup{}
 
