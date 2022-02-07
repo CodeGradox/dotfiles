@@ -26,6 +26,9 @@ Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
 
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+
 # Use trailing commas in multi-line argument lists.
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
