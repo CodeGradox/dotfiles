@@ -26,12 +26,21 @@ Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
 
-Layout/HashAlignment:
-  EnforcedColonStyle: table
-
-# Use trailing commas in multi-line argument lists.
+# Requires a comma after the last item of all non-empty, multiline array literals.
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
 
+# Requires a comma after the last item of all non-empty, multiline hash literals.
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
+
+# Prevent Rubyocop from naging about using `unless` instead of negative conditions.
+Style/NegatedIf:
+  Enabled: false
+
+# Check that the keys, separators, and values of a multi-line hash literal are
+# aligned according to configuration.
+Style/HashAlignment:
+  EnforcedColonStyle:
+    - table
+    - key
