@@ -7,6 +7,9 @@ Style/StringLiterals:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
 # Set max line length to 120 characters.
 Layout/LineLength:
   Max: 120
@@ -27,7 +30,9 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Layout/HashAlignment:
-  EnforcedColonStyle: table
+  EnforcedColonStyle:
+    - key
+    - table
 
 # Use trailing commas in multi-line argument lists.
 Style/TrailingCommaInArrayLiteral:
