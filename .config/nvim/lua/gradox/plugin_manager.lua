@@ -83,7 +83,10 @@ return require("packer").startup(function()
   -- Telescope, a highly extendable fuzzy finder.
   use {
     "nvim-telescope/telescope.nvim",
-    requires = "nvim-lua/plenary.nvim"
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("gradox.plugins.telescope")
+    end
   }
   -- Native C port of fzf.
   use {
@@ -92,7 +95,7 @@ return require("packer").startup(function()
     branch = "main",
     requires = "nvim-telescope/telescope.nvim",
     config = function()
-      require("gradox.plugins.telescope")
+      require("gradox.plugins.telescope_fzf")
     end
   }
 
