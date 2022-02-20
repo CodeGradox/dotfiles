@@ -1,5 +1,0 @@
-configuration {
-  theme: "slate-custom";
-  font: "SF-Pro-Display-Semibold 18";
-  modi: "drun,run";
-}
