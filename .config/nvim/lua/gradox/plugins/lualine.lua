@@ -2,31 +2,32 @@
 -- The status bar at the bottom of the window.
 require("lualine").setup {
   options = {
-    theme = 'ayu_light',
-    section_separators = '',
-    component_separators = '|',
+    theme = "ayu_light",
+    section_separators = "",
+    component_separators = "|",
   },
   sections = {
     lualine_b = {
-      'branch',
-      'diff',
+      "branch",
+      "diff",
     },
     lualine_c = {
       {
-        'filename',
+        "filename",
         -- Show relative path.
         path = 1,
       }
     },
     lualine_x = {
-      'encoding',
+      "diagnostics",
+      "encoding",
       {
-        'fileformat',
+        "fileformat",
         icons_enabled = false
       },
-      'filetype',
+      -- "filetype",
     }
   },
   -- Vim fugitive, show git status in the status bar.
-  extensions = { 'fugitive' },
+  extensions = { "fugitive" },
 }
