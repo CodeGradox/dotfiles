@@ -6,7 +6,6 @@ set -gx RAILS_ENV 'development'
 # Used by certain Rails tasks
 set -gx THOR_MERGE "nvim -d"
 # Variable used by ikbygg-web to find the wkhtmltopdf binary.
-set -gx GEM_HOME "~/.rbenv"
 set -gx MOZ_ENABLE_WAYLAND 1
 set -gx MOZ_DBUS_REMOTE 1
 set -gx XDG_SESSION_TYPE 'wayland'
