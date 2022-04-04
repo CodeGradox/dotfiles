@@ -14,6 +14,10 @@ return require("packer").startup(function()
   -- Packer can manage itself.
   use "wbthomason/packer.nvim"
 
+  -- Webicons, requires a patched font: https://www.nerdfonts.com/
+  -- Sauce Code Pro Nerd Font
+  use "kyazdani42/nvim-web-devicons"
+
   -- A collection of common configurations for Neovim"s built-in language
   -- server client.
   use {

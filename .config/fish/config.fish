@@ -6,11 +6,11 @@ set -gx RAILS_ENV 'development'
 # Used by certain Rails tasks
 set -gx THOR_MERGE "nvim -d"
 # Variable used by ikbygg-web to find the wkhtmltopdf binary.
-set -gx GEM_HOME "~/.rbenv"
 set -gx MOZ_ENABLE_WAYLAND 1
 set -gx MOZ_DBUS_REMOTE 1
 set -gx XDG_SESSION_TYPE 'wayland'
 set -gx BAT_THEME 'OneHalfLight'
+
 # This is where n (node version manager) will install the node binaries.
 # Make sure that $HOME/b/bin is present in the $PATH.
 # npm i -g n
