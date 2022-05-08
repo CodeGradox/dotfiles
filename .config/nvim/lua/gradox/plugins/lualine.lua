@@ -3,13 +3,16 @@
 require("lualine").setup {
   options = {
     theme = "ayu_light",
-    section_separators = "",
-    component_separators = "|",
+    section_separators = '',
+    component_separators = '|',
+    -- globalstatus = 3,
   },
   sections = {
     lualine_b = {
-      "branch",
-      "diff",
+      {
+        "branch",
+        "diff",
+      }
     },
     lualine_c = {
       {
