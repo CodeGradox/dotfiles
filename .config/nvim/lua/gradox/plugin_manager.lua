@@ -140,16 +140,6 @@ return require("packer").startup(function()
   -- To find, invoke with "f".
   use "ggandor/lightspeed.nvim"
 
-  -- A pretty list for showing diagnostics, references, telescope results,
-  -- quickfix and location lists to help you solve all the trouble your code is
-  -- causing.
-  use {
-    "folke/trouble.nvim",
-    config = function()
-      require("gradox.plugins.trouble")
-    end
-  }
-
   -- SYNTAX HIGHLIGHTLING
 
   -- Highlight cells in CSV files.
