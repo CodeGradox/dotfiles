@@ -1,0 +1,23 @@
+accent: '#6c71c4' # Accent color for UI elements
+background: '#282b33' # Terminal background color
+details: darker # Whether the theme is lighter or darker.
+foreground: '#dcdee3' # The foreground color.
+terminal_colors: # Ansi escape colors.
+  bright:
+    black: '#dcdee3'
+    blue: '#73ade9'
+    cyan: '#6fb3bf'
+    green: '#a0c180'
+    magenta: '#bb7bd7'
+    red: '#d17277'
+    white: '#e4e4e4'
+    yellow: '#dfc184'
+  normal:
+    black: '#dcdee3'
+    blue: '#73ade9'
+    cyan: '#6fb3bf'
+    green: '#a0c180'
+    magenta: '#bb7bd7'
+    red: '#d17277'
+    white: '#b6b3b3'
+    yellow: '#dfc184'
